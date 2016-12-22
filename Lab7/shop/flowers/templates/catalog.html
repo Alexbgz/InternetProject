@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Каталог{% endblock %}
+{% block content %}
+    <div class="container" xmlns="http://www.w3.org/1999/html">
+        <div class="jumbotron">
+            <div class="row">
+                {% for IDProduct in catalog %}
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="{{ IDProduct.foto }}">
+                            <div class="caption">
+                                <p>{{ IDProduct.product }}<span class="pull-right">Цена {{ IDProduct.price }} Руб.</span></p>
+                                <p><a class="btn btn-lg btn-success" href="{% url 'product' IDProduct.id %}" role="button">Купить</a></p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+       </div>
+    </div>
+{% endblock %}

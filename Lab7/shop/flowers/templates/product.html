@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Товар{% endblock %}
+{% block content %}
+    <div class="container" xmlns="http://www.w3.org/1999/html">
+        <div class="jumbotron">
+            <div class="row">
+                {% for IDProduct in catalog %}
+                    <div class="col-md-6">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <p>{{ IDProduct.product }}</p>
+                            </div>
+                            <img src="{{ IDProduct.foto }}">
+                            <div class="caption">
+                                <p>В наличии {{ IDProduct.quantity }}шт.<span class="pull-right">Цена {{ IDProduct.price }} Руб.</span></p>
+                                <p><a class="btn btn-lg btn-success" href="{% url 'product' IDProduct.id %}" role="button">Заказать</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h2>Описание</h2>
+                                <p>{{ IDProduct.product }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+       </div>
+    </div>
+{% endblock %}
